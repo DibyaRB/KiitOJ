@@ -1,8 +1,8 @@
 [database]
 adapter  = Mysql
 host     = localhost
-username = kiitoj
-password = kiitoj
+username = root
+password = chirag
 name     = kiitoj
 
 [application]
@@ -12,3 +12,6 @@ viewsDir       = app/views/
 formsDir       = app/forms/
 baseUri        = /KiitOJ/
 
+[mandrill]
+apikey		= 9yH3j06cpDYo4f0LEJ0QMg
+mandrillDir	= mandrillapi/src/

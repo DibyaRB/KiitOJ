@@ -21,7 +21,6 @@ class LoginController extends ControllerBase
     public function indexAction()
     {
 
-	//$this->view->setRenderLevel(View::LEVEL_NO_RENDER);
 	if ($this->request->isPost()) {
             $email = mb_strtolower($this->request->getPost('email'));
             $password = $this->request->getPost('password');
@@ -31,14 +30,24 @@ class LoginController extends ControllerBase
             ));
 		
 	    if($user != false){
-
-            if ($user->pass==$password) {
-                $this->_registerSession($user);  //// session variable
-//echo "bando";
-               return $this->response->redirect('practice');
-            }
-	}
-            $this->flash->error('Wrong email/password');
+		$user2 = User::findFirst(array(
+		        "(u_email = :email: AND pass = :password:)",
+		        'bind' => array('email' => $email, 'password' => sha1("$password"."$user->salt"))
+		    ));
+                if ($user2 != false) {
+			if($user2->active==0)
+				$this->flash->error('Please verify Email Address');
+			else
+			{
+			        $this->_registerSession($user);  //// session variable
+			        return $this->response->redirect('dashboard');
+			}
+               }
+	       else
+               $this->flash->error('Wrong email/password');
+	   }
+	   else
+		$this->flash->error('Email Unregistered');
         }
     }
 

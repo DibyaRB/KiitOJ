@@ -47,8 +47,8 @@ class SignupController extends ControllerBase
 			//Get all posted values from form.
 			$rollno=$this->request->getPost('roll');
 			$name=$this->request->getPost('name');
-			$email=$this->request->getPost('email');
-			$pass=$this->request->getPost('pass');
+			$email=$rollno.'@kiit.ac.in';
+			$password=$this->request->getPost('pass');
 			$cpass=$this->request->getPost('cpass');
 			
 			//check if a user exists with this email address.
@@ -60,17 +60,20 @@ class SignupController extends ControllerBase
 			if($user==false)
 			{
 				//check if passwords and confirm passwords match.
-				if ($pass == $cpass)
+				if ($password == $cpass)
 				{
 					//Set salt and generate password combining user password and salt.
 					
-					$password=sha1($pass.$salt);
+					$salt=genUniqueReset(16);
+					$pass=sha1($password.$salt);
 					//Create row in database by invoking corresponding Model Class. Set all required coloumn values accordingly.
 					$user=new User();
 					$user->name=$name;
 					$user->u_email=$email;
 					$user->pass=$pass;
-					
+					$user->salt=$salt;
+					$user->score=0;
+					$user->reset=genUniqueReset(50);
 					$user->roll_no=$rollno;
 					//Save the row in the database.
 					if ($user->save()==0) {
@@ -80,23 +83,55 @@ class SignupController extends ControllerBase
 					}
 					else
 					{
-						$this->response->redirect('login');
+						$msg=array ("html" => "Hi ".$name.",<br>Welcome To KIIT Online Judge. <br>Please confirm your email by clicking on this link: <br> <a href='http://localhost/KiitOJ/signup/confirm/".$user->roll_no."/".$user->reset."'>Continue</a><br> Else please copy paste this link on your browser's URL bar: <br> <a href='http://localhost/KiitOJ/signup/confirm/".$user->roll_no."/".$user->reset."'>http://localhost/KiitOJ/signup/confirm/".$user->roll_no."/".$user->reset."</a><br>  Thank you.",
+							"subject" =>"KIIT Online Judge:Confirmation email",
+							"toemail" => $email,
+							"fromemail" =>"noreply@kiitoj.com",
+							"fromname" =>"KIIT Online Judge",
+							"trackopen" => true );
+						
+						$mandrill = new MandrillController();
+						$mandrill->sendAction($msg);
+						$this->flash->notice('Please Verify Your Email Address.');
+						//$this->response->redirect('login');
 					}
 				}
 				else
 				{
-					echo "Passwords don't match";
+					$this->flash->error('Passwords do not match.');
 				}
 			}
 			else
 			{
-				echo "Already Registered";
+				$this->flash->error('Email Id already registered');
 			}
 		}
 	}
 
+	public function confirmAction($roll,$reset)
+	{
+		if($roll == NULL || $reset==NULL)
+		{
+			return $this->response->redirect("404");
+		}
 
+		$user = User::findFirst(array(
+              		  "(roll_no = :id:)",
+                	  'bind' => array('id' => $roll)
+           		 ));
+		if($user->reset==$reset)
+		{
+			//update user as active.
+			$user->reset=NULL;
+			$user->active=1;
+			$user->save();
+			$this->flash->success('<span class="glyphicon glyphicon-info-sign"></span>  Email verified.');
+		
+		}
+		$this->response->redirect('login');
+	}
 }
+
 
 
 

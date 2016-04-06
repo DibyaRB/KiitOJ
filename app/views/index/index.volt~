@@ -1,4 +1,3 @@
-{{content()}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,7 +139,7 @@
 
   <section id="contact">
    
-    <div id="contact-us" class="parallax">
+    
       <div class="container">
         <div class="row">
           <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
@@ -188,7 +187,7 @@
           </div>
         </div>
       </div>
-    </div>        
+            
   </section><!--/#contact-->
   <footer id="footer">
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">

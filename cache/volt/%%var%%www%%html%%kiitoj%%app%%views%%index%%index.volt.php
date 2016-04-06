@@ -1,4 +1,3 @@
-<?php echo $this->getContent(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -6,7 +6,8 @@ class PracticeController extends ControllerBase
 
     public function indexAction()
     {
-        
+        $this->tag->setTitle('Practice');
+        parent::initialize();
     }
 
     public function submitAction()
@@ -14,11 +15,9 @@ class PracticeController extends ControllerBase
 if ($this->request->isPost()) {
 		
 		$code=$this->request->getPost('prog');
-		$lng=$this->request->getPost('lang');
-		//echo $lng;
-		
-	
-		$input = '10 20';
+		//$lng=$this->request->getPost('lang');
+		$lng=2;
+		$input = '10';
 		//echo $code;
 		//$code = 'a,b = map(int,raw_input().split())
 		//print (a+b)';
