@@ -12,6 +12,13 @@ class User extends Model
 
 	public $pass;
 
+	public $reset;
+
+	public $salt;
+
+	public $score;
+
+	public $active;
 
 	public function getSource()
 	{

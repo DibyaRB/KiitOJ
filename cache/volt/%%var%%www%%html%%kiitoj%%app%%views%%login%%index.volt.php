@@ -1,15 +1,64 @@
-<?php echo $this->tag->stylesheetLink('css/login.css'); ?>
-
 <?php echo $this->getContent(); ?>
-<div class="wrapper">
-<?php echo $this->flash->output(); ?>
-  <form class="form-signin" method="post" >
-    <h2 class="form-signin-heading">Please login</h2>
-    <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
-    <input type="password" class="form-control" name="password" placeholder="Password" required="" />
-    <label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-      </label>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-  </form>
-</div>
+
+<div id="login-page">
+	  	<div class="container">
+	  	
+		      <form class="form-login" action="login/index" method="POST">
+		        <h2 class="form-login-heading">sign in now</h2>
+			<?php echo $this->flash->output(); ?>
+		        <div class="login-wrap">
+		            <input type="text" class="form-control" placeholder="User ID" name="email" autofocus>
+		            <br>
+		            <input type="password" class="form-control" name="password" placeholder="Password">
+		            <label class="checkbox">
+		                <span class="pull-right">
+		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+		
+		                </span>
+		            </label>
+		            <input class="btn btn-theme btn-block" type="submit" value="SIGN IN" >
+		            <hr>
+		            
+		            <div class="registration">
+		                Don't have an account yet?<br/>
+		                <a class="" href="signup">
+		                    Create an account
+		                </a>
+		            </div>
+		
+		        </div>
+		</form>
+		          <!-- Modal -->
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+		              <div class="modal-dialog">
+		                  <div class="modal-content">
+		                      <div class="modal-header">
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                          <h4 class="modal-title">Forgot Password ?</h4>
+		                      </div>
+		                      <div class="modal-body">
+		                          <p>Enter your e-mail address below to reset your password.</p>
+		                          <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+		
+		                      </div>
+		                      <div class="modal-footer">
+		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+		                          <button class="btn btn-theme" type="button">Submit</button>
+		                      </div>
+		                  </div>
+		              </div>
+		          </div>
+		          <!-- modal -->
+		
+		      	  	
+	  	
+	  	</div>
+	  </div>
+
+<!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="http://localhost/KiitOJ/public/js/jquery.backstretch.min.js"></script>
+    <script>
+        $.backstretch("http://localhost/KiitOJ/public/img/login-bg.jpg", {speed: 500});
+    </script>
+
