@@ -10,7 +10,7 @@ class LogoutController extends Controller
         //Destroy the whole session
 	$this->session->remove('auth');
         $this->session->destroy();
-	return $this->forward('index');
+	return $this->response->redirect('index');
     }
 
 }

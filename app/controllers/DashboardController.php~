@@ -7,6 +7,13 @@ class DashboardController extends ControllerBase
     {
         $this->tag->setTitle('Feed');
 	$this->view->setTemplateAfter('sidetop');
+	$auth = $this->session->get('auth');
+	if($auth[cid]==false)
+		$this->response->redirect('404');
+	else
+	{
+		$this->view->name = $auth[name];
+	}
         parent::initialize();
     }
 

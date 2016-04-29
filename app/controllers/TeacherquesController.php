@@ -1,14 +1,14 @@
 <?php
 
-class DashboardController extends ControllerBase
+class TeacherquesController extends ControllerBase
 {
 
     public function initialize()
     {
-        $this->tag->setTitle('Feed');
-	$this->view->setTemplateAfter('sidetop');
+        $this->tag->setTitle('Questions');
+	$this->view->setTemplateAfter('teachersidetop');
 	$auth = $this->session->get('auth');
-	if($auth[roll_no]==false)
+	if($auth[t_id]==false)
 		$this->response->redirect('404');
 	else
 	{
@@ -20,6 +20,11 @@ class DashboardController extends ControllerBase
      public function indexAction()
      {
 	
+     }
+
+     public function addAction()
+     {
+	$this->view->name="Chirag Chinmay";
      }
 }
 ?>

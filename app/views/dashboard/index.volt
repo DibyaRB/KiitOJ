@@ -175,7 +175,7 @@
             // (string | mandatory) the heading of the notification
             title: 'Welcome to KIIT Online Judge!',
             // (string | mandatory) the text inside the notification
-            text: 'GANDIMARA, MAGHIA, BANDO Programming karibu? To bapa programming karithila be? Chusunu sala.',
+            text: '{{ name}}, Hope you Have a wonderful programming Experience!',
             // (string | optional) the image to display on the left
             image: 'http://localhost/KiitOJ/public/img/ui-sam.jpg',
             // (bool | optional) if you want it to fade out on its own or just sit there

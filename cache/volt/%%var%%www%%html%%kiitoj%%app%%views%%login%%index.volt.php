@@ -3,7 +3,7 @@
 <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="login/index" method="POST">
+		      <form class="form-login" action="http://localhost/KiitOJ/login/index" method="POST">
 		        <h2 class="form-login-heading">sign in now</h2>
 			<?php echo $this->flash->output(); ?>
 		        <div class="login-wrap">
@@ -21,7 +21,7 @@
 		            
 		            <div class="registration">
 		                Don't have an account yet?<br/>
-		                <a class="" href="signup">
+		                <a class="" href="http://localhost/KiitOJ/signup">
 		                    Create an account
 		                </a>
 		            </div>
@@ -36,6 +36,7 @@
 		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		                          <h4 class="modal-title">Forgot Password ?</h4>
 		                      </div>
+					<form method="post" action="http://localhost/KiitOJ/forgotpassword">
 		                      <div class="modal-body">
 		                          <p>Enter your e-mail address below to reset your password.</p>
 		                          <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
@@ -43,8 +44,9 @@
 		                      </div>
 		                      <div class="modal-footer">
 		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-		                          <button class="btn btn-theme" type="button">Submit</button>
+		                          <input class="btn btn-theme" type="submit" value="Submit"/>
 		                      </div>
+					</form>
 		                  </div>
 		              </div>
 		          </div>
