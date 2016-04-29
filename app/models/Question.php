@@ -8,6 +8,8 @@ class Question extends Model
 
 	public $q_name;
 
+	public $q_constraint;
+
 	public $q_description;
 
 	public $q_visible;

@@ -19,12 +19,240 @@ class TeacherquesController extends ControllerBase
 
      public function indexAction()
      {
-	
+	$auth = $this->session->get('auth');
+	$t_id = $auth[t_id];
+
+	$ques = Question::find(array(
+                "(t_id = :tid:)",
+                'bind' => array('tid' => $t_id)
+            ));
+	$this->view->ques=$ques;
      }
 
      public function addAction()
      {
-	$this->view->name="Chirag Chinmay";
+	if ($this->request->isPost()) {
+	$auth = $this->session->get('auth');
+	$qname=$this->request->getPost('qname');
+	$qscore=$this->request->getPost('qscore');
+	$constraints=$this->request->getPost('constraints');
+	$info=$this->request->getPost('info');
+	$comment=$this->request->getPost('comment');
+	$tags=$this->request->getPost('tags');
+	$type=$this->request->getPost('sel1');
+	$qlevel=$this->request->getPost('qlevel');
+	$qvisible=$this->request->getPost('qvisible');
+
+	$boxi1=$this->request->getPost('boxes1i');
+	$boxo1=$this->request->getPost('boxes1o');
+	$boxi2=$this->request->getPost('boxes2i');
+	$boxo2=$this->request->getPost('boxes2o');
+	$boxi3=$this->request->getPost('boxes3i');
+	$boxo3=$this->request->getPost('boxes3o');
+	$boxi4=$this->request->getPost('boxes4i');
+	$boxo4=$this->request->getPost('boxes4o');
+
+	//echo $qlevel;
+	$que=new Question();
+	$que->q_name=$qname;
+	$que->q_score=$qscore;
+	$que->q_constraint=$constraints;
+	$que->q_description=$info;
+	$que->q_type=$type;
+	$que->q_level=$qlevel;
+	$que->t_id=$auth[t_id];
+	if($qvisible == false)
+		$que->q_visible=0;
+	else
+		$que->q_visible=$qvisible;
+
+	if ($que->save() == false) {
+				foreach ($que->getMessages() as $message) {
+				    echo $message;
+						}
+
+	}
+	else
+	{
+	$tcase=new Testcase();
+	$tcase->q_id=$que->q_id;
+	$tcase->t_input=$boxi1;
+	$tcase->t_output=$boxo1;
+
+	$tcase2=new Testcase();
+	$tcase2->q_id=$que->q_id;
+	$tcase2->t_input=$boxi2;
+	$tcase2->t_output=$boxo2;
+
+	$tcase3=new Testcase();
+	$tcase3->q_id=$que->q_id;
+	$tcase3->t_input=$boxi3;
+	$tcase3->t_output=$boxo3;
+
+	$tcase4=new Testcase();
+	$tcase4->q_id=$que->q_id;
+	$tcase4->t_input=$boxi4;
+	$tcase4->t_output=$boxo4;
+
+	if ($tcase->save() == false|| $tcase2->save() == false || $tcase3->save() == false || $tcase4->save() == false) {
+				foreach ($tcase->getMessages() as $message) {
+				    echo $message;
+						}
+
+	
+       }
+}
+}
+}
+
+
+     public function viewAction($qid)
+     {
+	$ques=Question::findFirst(array(
+			"conditions" => "q_id = '$qid'"));
+	$test=Testcase::find(array(
+				"conditions" => "q_id = '$qid'"));
+	//echo "hjkl";
+	//print_r($test);
+	$test1=$test[0];
+	//print_r($test1);
+	$test2=$test[1];
+	$test3=$test[2];
+	$test4=$test[3];
+	$this->view->ques=$ques;
+	$this->view->test1=$test1;
+	$this->view->test2=$test2;
+	$this->view->test3=$test3;
+	$this->view->test4=$test4;
      }
+
+     public function editAction($qid)
+     {
+	$ques=Question::findFirst(array(
+			"conditions" => "q_id = '$qid'"));
+	$test=Testcase::find(array(
+				"conditions" => "q_id = '$qid'"));
+	//echo "hjkl";
+	//print_r($test);
+	$test1=$test[0];
+	//print_r($test1);
+	$test2=$test[1];
+	$test3=$test[2];
+	$test4=$test[3];
+	$this->view->ques=$ques;
+	$this->view->test1=$test1;
+	$this->view->test2=$test2;
+	$this->view->test3=$test3;
+	$this->view->test4=$test4;
+     }
+
+     public function deleteAction($qid)
+	{
+
+	$quesid=Testcase::findFirst(array(
+				"conditions" => "q_id = '$qid'"));
+		while($quesid!=null)
+	{
+	$quesid->delete();
+	$quesid=Testcase::findFirst(array(
+				"conditions" => "q_id = '$qid'"));
+	}
+
+	$quesid=Question::findFirst(array(
+			"conditions" => "q_id = '$qid'"));
+		$quesid->delete();
+
+	$this->response->redirect('teacherques');
+
+	}
+
+
+public function updateAction()
+     {
+	if ($this->request->isPost()) {
+	$auth = $this->session->get('auth');
+	$qname=$this->request->getPost('qname');
+	$qid=$this->request->getPost('qid');
+	$qscore=$this->request->getPost('qscore');
+	$constraints=$this->request->getPost('constraints');
+	$info=$this->request->getPost('info');
+	$comment=$this->request->getPost('comment');
+	$tags=$this->request->getPost('tags');
+	$type=$this->request->getPost('sel1');
+	$qlevel=$this->request->getPost('qlevel');
+	$qvisible=$this->request->getPost('qvisible');
+
+	$box1id=$this->request->getPost('boxes1id');
+	$boxi1=$this->request->getPost('boxes1i');
+	$boxo1=$this->request->getPost('boxes1o');
+	$box2id=$this->request->getPost('boxes2id');
+	$boxi2=$this->request->getPost('boxes2i');
+	$boxo2=$this->request->getPost('boxes2o');
+	$box3id=$this->request->getPost('boxes3id');
+	$boxi3=$this->request->getPost('boxes3i');
+	$boxo3=$this->request->getPost('boxes3o');
+	$box4id=$this->request->getPost('boxes4id');
+	$boxi4=$this->request->getPost('boxes4i');
+	$boxo4=$this->request->getPost('boxes4o');
+
+	//echo $qlevel;
+	$que=new Question();
+	$que->q_id=$qid;
+	$que->q_name=$qname;
+	$que->q_score=$qscore;
+	$que->q_constraint=$constraints;
+	$que->q_description=$info;
+	$que->q_type=$type;
+	$que->q_level=$qlevel;
+	$que->t_id=$auth[t_id];
+	if($qvisible == false)
+		$que->q_visible=0;
+	else
+		$que->q_visible=$qvisible;
+
+	if ($que->save() == false) {
+				foreach ($que->getMessages() as $message) {
+				    echo $message;
+						}
+
+	}
+	else
+	{
+	$tcase=new Testcase();
+	$tcase->te_id=$box1id;
+	$tcase->q_id=$que->q_id;
+	$tcase->t_input=$boxi1;
+	$tcase->t_output=$boxo1;
+
+	$tcase2=new Testcase();
+	$tcase2->te_id=$box2id;
+	$tcase2->q_id=$que->q_id;
+	$tcase2->t_input=$boxi2;
+	$tcase2->t_output=$boxo2;
+
+	$tcase3=new Testcase();
+	$tcase3->te_id=$box3id;
+	$tcase3->q_id=$que->q_id;
+	$tcase3->t_input=$boxi3;
+	$tcase3->t_output=$boxo3;
+
+	$tcase4=new Testcase();
+	$tcase4->te_id=$box4id;
+	$tcase4->q_id=$que->q_id;
+	$tcase4->t_input=$boxi4;
+	$tcase4->t_output=$boxo4;
+
+	if ($tcase->save() == false|| $tcase2->save() == false || $tcase3->save() == false || $tcase4->save() == false) {
+				foreach ($tcase->getMessages() as $message) {
+				    echo $message;
+						}
+
+	
+       }
+}
+}
+	$this->response->redirect('teacherques');
+
+}
 }
 ?>

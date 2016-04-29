@@ -19,7 +19,7 @@ class TeacherdashboardController extends ControllerBase
 
      public function indexAction()
      {
-	$this->view->name="Chirag Chinmay";
+	
      }
 }
 ?>

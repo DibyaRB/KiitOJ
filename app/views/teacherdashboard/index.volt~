@@ -16,14 +16,14 @@
 					  			<span class="li_news"></span>
 					  			<h3>+10</h3>
                   			</div>
-					  			<p>You solved 23 practice Questions.</p>
+					  			<p>You have set 23 practice Questions.</p>
                   		</div>
                   		<div class="col-md-4 col-sm-4 box0">
                   			<div class="box1">
 					  			<span class="li_data"></span>
 					  			<h3>14</h3>
                   			</div>
-					  			<p>You have attempted 14 Contests</p>
+					  			<p>You have created 14 Contests</p>
                   		</div>
                   	
                   	</div><!-- /row mt -->	
@@ -53,7 +53,7 @@
 					<td>{{ que.q_score }}</td>
 					<td>{% if que.q_visible == 0 %} <span class="label label-warning label-mini">Invisible</span> {% else %} <span class="label label-success label-mini">Visible</span>{% endif %}</td>
 					<td>
-					<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+					<a href="http://localhost/KiitOJ/teacherques/edit/{{ que.q_id }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                         <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
 					</td>
 				</tr>
