@@ -3,11 +3,11 @@
 <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="http://localhost/KiitOJ/login/index" method="POST">
+		      <form class="form-login" action="http://localhost/KiitOJ/login/teacherlogin/index" method="POST">
 		        <h2 class="form-login-heading">sign in now</h2>
 			{{ flash.output() }}
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="User ID" name="email" autofocus>
+		            <input type="text" class="form-control" placeholder="Email Address" name="email" autofocus>
 		            <br>
 		            <input type="password" class="form-control" name="password" placeholder="Password">
 		            <label class="checkbox">
@@ -21,7 +21,7 @@
 		            
 		            <div class="registration">
 		                Don't have an account yet?<br/>
-		                <a class="" href="http://localhost/KiitOJ/signup">
+		                <a class="" href="http://localhost/KiitOJ/signup/teachersignup">
 		                    Create an account
 		                </a>
 		            </div>
