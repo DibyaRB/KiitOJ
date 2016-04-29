@@ -19,7 +19,14 @@ class TeacherdashboardController extends ControllerBase
 
      public function indexAction()
      {
-	
+	$auth = $this->session->get('auth');
+	$t_id = $auth[t_id];
+
+	$ques = Question::find(array(
+                "(t_id = :tid:)",
+                'bind' => array('tid' => $t_id)
+            ));
+	$this->view->ques=$ques;
      }
 }
 ?>

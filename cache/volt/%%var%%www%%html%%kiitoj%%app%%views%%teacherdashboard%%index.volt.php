@@ -53,8 +53,8 @@
 					<td><?php echo $que->q_score; ?></td>
 					<td><?php if ($que->q_visible == 0) { ?> <span class="label label-warning label-mini">Invisible</span> <?php } else { ?> <span class="label label-success label-mini">Visible</span><?php } ?></td>
 					<td>
-					<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+					<a href="http://localhost/KiitOJ/teacherques/edit/<?php echo $que->q_id; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                        <a href="http://localhost/KiitOJ/teacherques/delete/<?php echo $que->q_id; ?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
 					</td>
 				</tr>
 				<?php } ?>
