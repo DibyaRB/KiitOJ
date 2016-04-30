@@ -33,14 +33,16 @@
                           </div>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Type</label>
-                              <div class="col-sm-10">
+                        <div class="col-sm-10">
                                   <select class="form-control" name="sel1">
-						  <option value="Warmup">Warm Up</option>
-						  <option value="Beginner">Beginner</option>
-						  <option value="Implementation">Implementation"</option>
-						  <option value="Sorting">Sorting</option>
-						  <option value="Greedy">Greedy techniques</option>
-						  <option value="Dynamic Programming">Dynamic programming</option>
+						  <option value="1">Warm Up</option>
+						  <option value="2">Beginner</option>
+						  <option value="3">Implementation"</option>
+						  <option value="4">Sorting</option>
+						  <option value="5">Greedy techniques</option>
+						  <option value="6">Bit Manipulation</option>
+						  <option value="6">Dynamic programming</option>
+						  <option value="7">Graphs</option>
 						</select>
                               </div>
                           </div>

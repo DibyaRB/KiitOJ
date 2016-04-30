@@ -14,16 +14,16 @@
                   		<div class="col-md-4 col-sm-4 col-md-offset-2 box0">
                   			<div class="box1">
 					  			<span class="li_news"></span>
-					  			<h3>+10</h3>
+					  			<h3>+{{ nosques }}</h3>
                   			</div>
-					  			<p>You have set 23 practice Questions.</p>
+					  			<p>You have set {{ nosques }} practice Questions.</p>
                   		</div>
                   		<div class="col-md-4 col-sm-4 box0">
                   			<div class="box1">
 					  			<span class="li_data"></span>
-					  			<h3>14</h3>
+					  			<h3>{{ noscontests }}</h3>
                   			</div>
-					  			<p>You have created 14 Contests</p>
+					  			<p>You have created {{ noscontests }} Contests</p>
                   		</div>
                   	
                   	</div><!-- /row mt -->	
@@ -54,7 +54,7 @@
 					<td>{% if que.q_visible == 0 %} <span class="label label-warning label-mini">Invisible</span> {% else %} <span class="label label-success label-mini">Visible</span>{% endif %}</td>
 					<td>
 					<a href="http://localhost/KiitOJ/teacherques/edit/{{ que.q_id }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                        <a href="http://localhost/KiitOJ/teacherques/delete/{{ que.q_id }}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
 					</td>
 				</tr>
 				{% endfor %}
@@ -77,7 +77,7 @@
                                   <th><i class="fa fa-bullhorn"></i> Contest Name</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> Duration </th>
                                   <th><i class="fa fa-bookmark"></i> Date </th>
-                                  <th><i class=" fa fa-edit"></i> Status </th>
+                                  <th><i class=" fa fa-edit"></i> Action </th>
                               </tr>
                               </thead>
                               <tbody>
@@ -86,7 +86,6 @@
 					<td>{{ con.name }}</td>
 					<td>{{ con.duration }}</td>
 					<td>{{ con.date }}</td>
-					<td>{% if que.q_visible == 0 %} <span class="label label-warning label-mini">Invisible</span> {% else %} <span class="label label-success label-mini">Visible</span>{% endif %}</td>
 					<td>
 					<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                         <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>

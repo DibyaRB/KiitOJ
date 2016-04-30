@@ -2,7 +2,7 @@
 
 use Phalcon\Mvc\Controller;
 
-class LogoutController extends Controller
+class LogoutController extends ControllerBase
 {
 
     public function indexAction()
