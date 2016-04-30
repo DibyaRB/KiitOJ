@@ -26,6 +26,14 @@ class TeacherdashboardController extends ControllerBase
                 "(t_id = :tid:)",
                 'bind' => array('tid' => $t_id)
             ));
+
+	$contests = Contest::find(array(
+                "(t_id = :tid:)",
+                'bind' => array('tid' => $t_id)
+            ));
+	$this->view->noscontests=count($contests);
+	$this->view->nosques=count($ques);
+	$this->view->contests=$contests;
 	$this->view->ques=$ques;
      }
 }

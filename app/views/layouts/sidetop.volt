@@ -29,7 +29,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="http://localhost/KiitOJ/public/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a><img src="http://localhost/KiitOJ/public/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">{{ name }}</h5>
               	  	
                   <li class="mt">
@@ -45,15 +45,14 @@
                           <span>Practice</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="http://localhost/KiitOJ/list/view/1">Warmup</a></li>
-                          <li><a  href="http://localhost/KiitOJ/list/view/2">Implementation</a></li>
-                          <li><a  href="http://localhost/KiitOJ/list/view/3">Strings</a></li>
-			  <li><a  href="http://localhost/KiitOJ/list/view/4">Sorting</a></li>
-			  <li><a  href="http://localhost/KiitOJ/list/view/5">Greedy</a></li>
-			  <li><a  href="http://localhost/KiitOJ/list/view/6">Bit Manipulation</a></li>
-			  <li><a  href="http://localhost/KiitOJ/list/view/7">Dynamic programming</a></li>
-			  <li><a  href="http://localhost/KiitOJ/list/view/8">Graphs</a></li>
-			  <li><a  href="http://localhost/KiitOJ/list/view/9">Game Theory</a></li>
+                          <li><a  href="http://localhost/KiitOJ/dashboard/display/1">Warmup</a></li>
+                          <li><a  href="http://localhost/KiitOJ/dashboard/display/2">Beginner</a></li>
+			  <li><a  href="http://localhost/KiitOJ/dashboard/display/3">Implementation</a></li>
+			  <li><a  href="http://localhost/KiitOJ/dashboard/display/4">Sorting</a></li>
+			  <li><a  href="http://localhost/KiitOJ/dashboard/display/5">Greedy</a></li>
+			  <li><a  href="http://localhost/KiitOJ/dashboard/display/6">Bit Manipulation</a></li>
+			  <li><a  href="http://localhost/KiitOJ/dashboard/display/7">Dynamic programming</a></li>
+			  <li><a  href="http://localhost/KiitOJ/dashboard/display/8">Graphs</a></li>
                       </ul>
                   </li>
 

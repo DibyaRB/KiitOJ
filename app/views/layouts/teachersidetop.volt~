@@ -56,9 +56,9 @@
                           <span>Contests</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="http://localhost/KiitOJ/list/contestview/1">Your Contests</a></li>
-                          <li><a  href="http://localhost/KiitOJ/list/contestview/2">Add Contest</a></li>
-			  <li><a  href="http://localhost/KiitOJ/list/contestview/2">Your Reports</a></li>
+                          <li><a  href="http://localhost/KiitOJ/teachercontest/">Your Contests</a></li>
+                          <li><a  href="http://localhost/KiitOJ/teachercontest/add">Add Contest</a></li>
+			  <li><a  href="http://localhost/KiitOJ/list/teachercontest/report">Your Reports</a></li>
                       </ul>
                   </li>
               </ul>
